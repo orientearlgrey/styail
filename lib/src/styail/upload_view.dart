@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:styail/src/styail/components/selector_button.dart';
 
 class StyailUploadView extends StatefulWidget {
   const StyailUploadView({super.key});
@@ -104,86 +105,32 @@ class _MyWidgetState extends State<StyailUploadView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            gender = gender == 'male' ? '' : 'male';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            gender == 'male'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "Male",
-                          style: TextStyle(
-                              color: gender == 'male'
-                                  ? Colors.white
-                                  : Colors.black),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            gender = gender == 'female' ? '' : 'female';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            gender == 'female'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "Female",
-                          style: TextStyle(
-                              color: gender == 'female'
-                                  ? Colors.white
-                                  : Colors.black),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            gender = gender == 'dm' ? '' : 'dm';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            gender == 'dm'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "Does not matter",
-                          style: TextStyle(
-                            color: gender == 'dm' ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
+                      StyailSelectorButton(
+                          attribute: gender,
+                          value: 'Male',
+                          action: () {
+                            setState(() {
+                              gender = gender == 'male' ? '' : 'male';
+                            });
+                          }),
+                      StyailSelectorButton(
+                          attribute: gender,
+                          value: 'Female',
+                          action: () {
+                            setState(() {
+                              gender = gender == 'female' ? '' : 'female';
+                            });
+                          }),
+                      StyailSelectorButton(
+                          attribute: gender,
+                          value: 'Does not matter',
+                          action: () {
+                            setState(() {
+                              gender = gender == 'does not matter'
+                                  ? ''
+                                  : 'does not matter';
+                            });
+                          }),
                     ],
                   ),
                   const SizedBox(
@@ -202,136 +149,46 @@ class _MyWidgetState extends State<StyailUploadView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            size = size == 's' ? '' : 's';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            size == 's'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "S",
-                          style: TextStyle(
-                            color: size == 's' ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            size = size == 'm' ? '' : 'm';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            size == 'm'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "M",
-                          style: TextStyle(
-                            color: size == 'm' ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            size = size == 'l' ? '' : 'l';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            size == 'l'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "L",
-                          style: TextStyle(
-                            color: size == 'l' ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            size = size == 'xl' ? '' : 'xl';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            size == 'xl'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "XL",
-                          style: TextStyle(
-                            color: size == 'xl' ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            size = size == 'xxl' ? '' : 'xxl';
-                          });
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            size == 'xxl'
-                                ? Colors.black
-                                : const Color(0xffe0e0e0),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "XXL",
-                          style: TextStyle(
-                            color: size == 'xxl' ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
+                      StyailSelectorButton(
+                          attribute: size,
+                          value: 'S',
+                          action: () {
+                            setState(() {
+                              size = size == 's' ? '' : 's';
+                            });
+                          }),
+                      StyailSelectorButton(
+                          attribute: size,
+                          value: 'M',
+                          action: () {
+                            setState(() {
+                              size = size == 'm' ? '' : 'm';
+                            });
+                          }),
+                      StyailSelectorButton(
+                          attribute: size,
+                          value: 'L',
+                          action: () {
+                            setState(() {
+                              size = size == 'l' ? '' : 'l';
+                            });
+                          }),
+                      StyailSelectorButton(
+                          attribute: size,
+                          value: 'XL',
+                          action: () {
+                            setState(() {
+                              size = size == 'xl' ? '' : 'xl';
+                            });
+                          }),
+                      StyailSelectorButton(
+                          attribute: size,
+                          value: 'XXL',
+                          action: () {
+                            setState(() {
+                              size = size == 'xxl' ? '' : 'xxl';
+                            });
+                          }),
                     ],
                   ),
                   const SizedBox(
