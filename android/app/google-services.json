@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "605812453080",
+    "project_id": "styail",
+    "storage_bucket": "styail.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605812453080:android:f3a094825c8e5dbff1f1ad",
+        "android_client_info": {
+          "package_name": "com.styail.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCZ7-t2whgvPPhXWFN0zcdxwi542_tICg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605812453080:android:42bb7303071653d0f1f1ad",
+        "android_client_info": {
+          "package_name": "systems.perceptual.styail"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCZ7-t2whgvPPhXWFN0zcdxwi542_tICg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605812453080:android:ab41a48a79890a1bf1f1ad",
+        "android_client_info": {
+          "package_name": "systems.perceptual.styail.styail"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCZ7-t2whgvPPhXWFN0zcdxwi542_tICg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
