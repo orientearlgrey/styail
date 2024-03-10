@@ -17,6 +17,9 @@ class StyailSelectorButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: action,
       style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          EdgeInsets.symmetric(horizontal: 20),
+        ),
         backgroundColor: MaterialStateProperty.all(
           attribute == value.toLowerCase()
               ? Colors.black
@@ -31,8 +34,8 @@ class StyailSelectorButton extends StatelessWidget {
       child: Text(
         value,
         style: TextStyle(
-            color:
-                attribute == value.toLowerCase() ? Colors.white : Colors.black),
+          color: attribute == value.toLowerCase() ? Colors.white : Colors.black,
+        ),
       ),
     );
   }

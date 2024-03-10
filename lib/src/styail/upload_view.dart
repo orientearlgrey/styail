@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:styail/src/styail/components/selector_button.dart';
 
@@ -14,12 +15,14 @@ class StyailUploadView extends StatefulWidget {
 class _MyWidgetState extends State<StyailUploadView> {
   late String gender;
   late String size;
+  late String files;
 
   @override
   void initState() {
     super.initState();
     gender = "";
     size = "";
+    files = "";
   }
 
   @override
@@ -63,32 +66,66 @@ class _MyWidgetState extends State<StyailUploadView> {
                     padding: const EdgeInsets.only(top: 10),
                     child: DottedBorder(
                       borderType: BorderType.RRect,
-                      radius: const Radius.circular(8),
-                      dashPattern: const [8, 4],
-                      strokeWidth: 2,
-                      color: const Color(0xffcccccc),
-                      child: Container(
-                        height: 112,
-                        width: 480,
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.drive_folder_upload_rounded,
-                              color: Color(0xff7c7c7c),
-                              size: 32,
+                      radius: const Radius.circular(8.0),
+                      dashPattern: const [3, 3, 3, 3],
+                      child: OutlinedButton(
+                        onPressed: () async {
+                          FilePickerResult? result =
+                              await FilePicker.platform.pickFiles(
+                            allowMultiple: true,
+                            dialogTitle: "Select files",
+                            type: FileType.custom,
+                            allowedExtensions: ['jpg', 'png'],
+                          );
+
+                          if (result != null) {
+                            String fileName = "";
+
+                            setState(() {
+                              for (var file in result.files) {
+                                fileName = file.name;
+                                files = "$files$fileName\n";
+                              }
+                            });
+                          }
+                        },
+                        style: ButtonStyle(
+                          side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide.none,
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
                             ),
-                            Text(
-                              'Upload 3 images',
-                              style: TextStyle(
-                                fontSize: 17,
+                          ),
+                        ),
+                        child: const SizedBox(
+                          height: 112,
+                          width: 480,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.drive_folder_upload_rounded,
+                                color: Color(0xff7c7c7c),
+                                size: 32,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Upload 3 images',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  Text((files != "") ? "Upload files:\n$files" : ""),
                   const SizedBox(
                     height: 50,
                   ),
@@ -103,7 +140,7 @@ class _MyWidgetState extends State<StyailUploadView> {
                   ),
                   const SizedBox(height: 10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       StyailSelectorButton(
                           attribute: gender,
@@ -147,7 +184,7 @@ class _MyWidgetState extends State<StyailUploadView> {
                   ),
                   const SizedBox(height: 10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       StyailSelectorButton(
                           attribute: size,
@@ -179,14 +216,6 @@ class _MyWidgetState extends State<StyailUploadView> {
                           action: () {
                             setState(() {
                               size = size == 'xl' ? '' : 'xl';
-                            });
-                          }),
-                      StyailSelectorButton(
-                          attribute: size,
-                          value: 'XXL',
-                          action: () {
-                            setState(() {
-                              size = size == 'xxl' ? '' : 'xxl';
                             });
                           }),
                     ],
